@@ -10,8 +10,67 @@
 <nav><a href="../index.html">&larr; All projects</a></nav>
 <main class="project-page">
   <h1>darkdice-rougelike</h1>
-  <p class="note">Content pending — placeholder scaffold.</p>
+  <span class="tag">Playable · Godot 4.7 (Web Build)</span>
+
+  <p>A roguelike deckbuilder — but with dice. Every round is a poker-dice
+  hand instead of a card hand: roll a pool of d6s (and eventually
+  bigger dice), lock the ones worth keeping, reroll the rest, and submit
+  for a chips-x-mult score against that round's target. Clear enough
+  rounds and gold buys permanent-for-the-run relics and pool upgrades
+  between hands — the loop will feel immediately familiar if you've
+  played Balatro, reskinned around dice instead of cards.</p>
+
+  <h2>Core loop</h2>
+  <ul>
+    <li><strong>Roll, lock, reroll, submit.</strong> Each hand starts
+    with a full roll of your dice pool (5 dice to start). Lock any dice
+    you want to keep, spend up to 3 rerolls on the rest, then submit.
+    The best-scoring combo the pool can form — High Die up through Two
+    Pair, Three-of-a-Kind, Straight, Full House, and all the way to
+    Eight-of-a-Kind — sets the chips and mult for that hand.</li>
+    <li><strong>Combos level up as you play them</strong>, permanently
+    for the run, the same way Balatro hands level up — lean on the
+    combo you're building toward and it keeps paying off better.</li>
+    <li><strong>Beat the round's target score</strong> within a limited
+    number of hands (4 to start) to clear it and bank gold — clearing
+    with hands to spare pays a bonus.</li>
+    <li><strong>Spend gold in the shop between rounds</strong> on Hexes
+    (passive relics — the Joker equivalent — that trigger off
+    dice-specific conditions, like Serpent's Eyes doubling Mult on a
+    pair of 1s, or Colossus rewarding a big Six-of-a-Kind-or-better
+    pool), Dice Enhancements (Glass dice that shatter for a Mult bonus,
+    Cursed dice that roll low but pay gold, Wild dice that reinforce
+    whatever face is already winning), or pool changes — add a die,
+    remove one, or upgrade a die's sides up the chain from d6 to d8,
+    d12, d20 for a wider range and a higher ceiling.</li>
+    <li><strong>Every third round is a Boss Wager</strong> — a one-round
+    twist like no locking, no rerolls, odd dice scoring zero, or gold
+    cut in half — that forces you to actually use whatever Hexes and
+    enhancements you've bought to counter it.</li>
+  </ul>
+  <p>Progress within a run — round, gold, owned Hexes, dice pool,
+  combo levels — autosaves after every action, so you can close the tab
+  mid-hand and pick the run back up later; dying resets the run back to
+  round one. One deliberate accessibility call in the UI: die color is
+  reserved to mean "this specific die," never a state indicator — locked
+  and enhanced dice are marked with a border ring and a corner badge
+  instead of a recolor, so state reads the same regardless of color
+  vision.</p>
+
+  <h2>Play it</h2>
+  <div id="darkdice-embed" class="embed-wrap">
+    <div class="embed-fallback">
+      <p>The game loads once this area scrolls into view. If it doesn't
+      appear — for example on a narrow/mobile screen, where it's skipped
+      on purpose — you can
+      <a href="../games/darkdice/index.html" target="_blank" rel="noopener">open it in a new tab</a>
+      instead.</p>
+    </div>
+  </div>
 </main>
 <script src="../js/site.js"></script>
+<script>
+  initLazyEmbed('darkdice-embed', '../games/darkdice/index.html');
+</script>
 </body>
 </html>

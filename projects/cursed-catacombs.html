@@ -9,9 +9,65 @@
 <body>
 <nav><a href="../index.html">&larr; All projects</a></nav>
 <main class="project-page">
-  <h1>cursed-catacombs</h1>
-  <p class="note">Content pending — placeholder scaffold.</p>
+  <h1>Cursed Catacombs</h1>
+  <span class="tag">Playable · Godot 4.7</span>
+
+  <p>A turn-based tactical deckbuilder on a 5x5 grid — think Into the
+  Breach's positioning crossed with Slay the Spire's deck-building, in a
+  single self-contained run rather than a sprawling meta-game. Every fight
+  is won or lost on where your Hero is standing as much as which card you
+  play.</p>
+
+  <h2>Core loop</h2>
+  <ul>
+    <li><strong>A run is 5 encounters</strong>, fought one at a time on a
+    walled 5x5 stone room. Your Hero and the enemy roster occupy tiles;
+    every card either attacks, defends, moves, or does something stranger,
+    targeting a specific pattern of tiles relative to whoever plays it —
+    Strike only reaches an adjacent enemy, Reckless Strike only reaches
+    exactly two tiles out, so range and positioning are part of the
+    decision, not just the card itself.</li>
+    <li><strong>Cards cost action points</strong>, 2 per turn to spend
+    however you like: two 1-cost cards, or one 2-cost card, or a 1-cost
+    card and pass. A cheap Strike-Strike turn out-damages a single Heavy
+    Strike, but the Heavy Strike lands it all in one hit — the deck is full
+    of trade-offs like that rather than strict upgrades.</li>
+    <li><strong>Enemies are distinct problems, not palette swaps.</strong>
+    Skeletons are a straightforward melee race. Slimes ignore block
+    entirely, so Guard is dead weight against them. Archers kite — they'll
+    retreat rather than let you close to melee range, and hit you from two
+    tiles out if you don't. Bone Guards regenerate their own block every
+    turn, so chipping away slowly doesn't work; you either commit a big hit
+    or clear their block outright with Sunder.</li>
+    <li><strong>HP carries across all 5 encounters</strong> in a run — damage
+    from an early fight is still with you going into the escalated final
+    encounter, so a between-fight reward screen lets you add a new card to
+    your deck, rest and heal, or skip both and keep your deck lean.</li>
+    <li><strong>Death ends the run</strong> and resets your deck and HP back
+    to the starting Strike/Lunge/Guard baseline for next time — but any
+    reward card you were ever offered stays permanently unlocked (check the
+    in-game Codex), so later runs draw from a wider pool even after a loss.</li>
+  </ul>
+
+  <p class="note">This project is under active development — the embedded
+  build below is exported for portfolio refreshes, not re-generated on
+  every commit, so it may trail the latest source by a bit at any given
+  time.</p>
+
+  <h2>Play it</h2>
+  <div id="cursed-catacombs-embed" class="embed-wrap">
+    <div class="embed-fallback">
+      <p>The game loads once this area scrolls into view. If it doesn't
+      appear — for example on a narrow/mobile screen, where it's skipped
+      on purpose — you can
+      <a href="../games/cursed-catacombs/index.html" target="_blank" rel="noopener">open it in a new tab</a>
+      instead.</p>
+    </div>
+  </div>
 </main>
 <script src="../js/site.js"></script>
+<script>
+  initLazyEmbed('cursed-catacombs-embed', '../games/cursed-catacombs/index.html');
+</script>
 </body>
 </html>
