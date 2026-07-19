@@ -10,7 +10,52 @@
 <nav><a href="../index.html">&larr; All projects</a></nav>
 <main class="project-page">
   <h1>hakdog-app</h1>
-  <p class="note">Content pending — placeholder scaffold.</p>
+  <span class="tag">Live demo · React Native / Expo</span>
+
+  <p>A mobile-first budgeting app for splitting one shared pool of money
+  across three spending envelopes — Needs, Wants, and Invest — plus a
+  separate running Travel fund. Built with React Native and Expo, with no
+  backend at all: every number lives in local storage on the device (or in
+  the browser's local storage, for the web build below). There's no account
+  to create and nothing ever leaves the device.</p>
+
+  <p class="cta">
+    <a class="btn" href="https://hakd0g23.github.io/hakdog-app-web/" target="_blank" rel="noopener">Open the live demo &rarr;</a>
+  </p>
+
+  <figure>
+    <img class="screenshot" src="../assets/img/hakdog-app.png" alt="hakdog-app dashboard showing default seed values across Needs, Invest, Wants, and Travel envelopes" onerror="this.style.display='none'">
+    <figcaption>Dashboard right after onboarding — default seed numbers, not
+    a real budget.</figcaption>
+  </figure>
+
+  <h2>What it does</h2>
+  <ul>
+    <li><strong>Onboarding, not a login</strong> — first launch just asks for
+    a name and an avatar. No sign-in, no email, no password.</li>
+    <li><strong>Set a monthly income and it auto-allocates</strong> across
+    the four envelopes using a default split, which is fully editable in
+    Settings.</li>
+    <li><strong>Log transactions against an envelope</strong> and watch its
+    remaining balance and progress bar update immediately.</li>
+    <li><strong>A dedicated Travel tab</strong> tracks a running savings fund
+    separately from the monthly spending envelopes, since travel money
+    isn't meant to reset every month the way the others do.</li>
+  </ul>
+
+  <h2>Try the demo</h2>
+  <p>The live demo above is the actual web export of the app, not a mockup —
+  it opens on the same first-launch onboarding screen a fresh install would
+  show, so expect to pick a name and an avatar before you see the dashboard.
+  Everything you enter is saved only in that browser's local storage, so
+  it's safe to explore with your own numbers: nothing is transmitted
+  anywhere, and clearing the site's storage (or opening a private window)
+  resets it back to onboarding.</p>
+
+  <p class="note">The screenshot above is seed data from a fresh demo
+  session, not a real budget. If you're evaluating the live demo yourself,
+  the same applies — treat it as scratch space, not somewhere to park real
+  financial figures, since it's a public URL running entirely client-side.</p>
 </main>
 <script src="../js/site.js"></script>
 </body>

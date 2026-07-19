@@ -25,6 +25,10 @@ nav a{text-decoration:none;color:var(--text);font-weight:600}
 footer{text-align:center;color:var(--muted);padding:2rem;font-size:.85rem}
 .btn{display:inline-block;background:var(--accent);color:#0f1115;padding:.6rem 1.1rem;border-radius:8px;font-weight:700;text-decoration:none}
 .note{background:#20242e;border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;font-size:.9rem;color:var(--muted)}
+.project-page figure{margin:1.5rem auto;text-align:center}
+.project-page .screenshot{max-width:280px;width:100%;display:block;margin:0 auto;border:1px solid var(--border);border-radius:14px}
+.project-page figcaption{color:var(--muted);font-size:.85rem;margin-top:.6rem}
+.cta{margin:1.25rem 0}
 @media (max-width:700px){
   .embed-wrap{aspect-ratio:auto;height:auto;padding:2rem 1rem;text-align:center}
   .embed-wrap iframe{display:none}

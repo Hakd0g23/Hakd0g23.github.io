@@ -9,8 +9,84 @@
 <body>
 <nav><a href="../index.html">&larr; All projects</a></nav>
 <main class="project-page">
-  <h1>trade-bot</h1>
-  <p class="note">Content pending — placeholder scaffold.</p>
+  <h1>Trade-Bot</h1>
+  <span class="tag">Write-up only</span>
+
+  <p>An automated trading system for MetaTrader 5, covering two independent
+  strategies and a small local ops layer to run them unattended. Started as
+  two browser-based tools, later ported to standalone Python services that
+  share a common broker bridge, position-sizing, and alerting layer.</p>
+
+  <h2>What it does</h2>
+  <ul>
+    <li><strong>Crypto scanner</strong> — a trend-following strategy across
+    seven major coins (vs USDT). A weekly EMA bias sets the only allowed
+    trade direction, confirmed on the daily timeframe, with entries on a 4H
+    pullback to a moving average or VWAP, an ATR-based stop, and a two-stage
+    take-profit (partial at 1:1, remainder at 2:1). Market data comes from a
+    free public API, so the scanner runs even without a live broker
+    connection.</li>
+    <li><strong>Forex/gold scanner</strong> — a completely different
+    approach: a multi-timeframe liquidity-sweep reversal (stop-hunt)
+    strategy across six major pairs plus gold, with no inherent trend bias.
+    It watches for price to wick beyond a recent 4-hour high/low and snap
+    back inside it, then enters in the reversal direction on the 15-minute
+    chart.</li>
+    <li><strong>Monitor dashboard</strong> — a local status page showing
+    whether the broker bridge and both scanners are actually alive (a real
+    heartbeat, not just "process running"), one-click start controls, and a
+    full post-reboot bootstrap sequence. Registered as a background service
+    so it survives restarts.</li>
+  </ul>
+
+  <h2>Risk and execution safety</h2>
+  <p>Trades are sized as a fixed percentage of account risk per trade,
+  computed from the broker's real contract specs rather than a fixed
+  lookup table. An early version of the sizing logic instead reused the
+  scanner's spot-market quantity formula directly as a broker lot count —
+  fine for symbols near a 1:1 lot multiple, but on symbols with much larger
+  contract multipliers that silently meant positions many times the
+  intended risk. That bug, combined with a duplicate order-send issue,
+  produced a batch of live trades with an 8.3% win rate and outsized
+  losses before either was caught. Both are fixed now: lot size is derived
+  from the broker's live tick value/size before every order, one open
+  position per symbol is enforced, and stop/target direction is validated
+  before anything is sent. Manual per-trade confirmation is also the
+  default — nothing fires automatically unless that's explicitly turned
+  off.</p>
+
+  <h2>Does the edge hold up?</h2>
+  <p>Both strategies were backtested bar-by-bar against real historical
+  data (two years of history for crypto, roughly 60 days of intraday data
+  for forex/gold) using the exact same strategy code that runs live, not a
+  separate re-implementation, so these numbers can't drift from what's
+  actually deployed. Results below are in R-multiples — multiples of risk
+  per trade — rather than dollar figures, since R is independent of
+  account size:</p>
+  <ul>
+    <li>Crypto, original parameters: +5.98R over 51 trades, 56.9% win rate,
+    2 of 7 symbols net negative.</li>
+    <li>Crypto, refined parameters (current): +55.43R over 235 trades,
+    56.6% win rate, all 7 symbols net positive.</li>
+    <li>Forex/gold, without a trend filter: -27.34R over 323 trades, 30.7%
+    win rate — a genuine negative edge over this window, not just an
+    unlucky run.</li>
+    <li>Forex/gold, with a 1H trend gate and a minimum stop-distance filter
+    (current): +5.00R over 37 trades, 37.8% win rate.</li>
+  </ul>
+  <p>The forex trend gate exists because of a real live losing streak
+  shortly after launch: the strategy dropped its first six closed trades in
+  a row, including three consecutive long GBPUSD signals fired within a
+  few hours of each other at successively worse prices — it kept calling
+  for a reversal into a trend that hadn't actually turned. Adding a
+  same-timeframe trend filter, and later a minimum stop-distance guard,
+  turned a backtested negative edge into a small, non-uniform positive one
+  — treated as a validated improvement rather than a guarantee, and not
+  walk-forward tested.</p>
+
+  <p class="note">Source code and the live trading account are not shared
+  publicly, given real-money exposure. This page is a write-up only — no
+  embedded demo, no repository link, no account access of any kind.</p>
 </main>
 <script src="../js/site.js"></script>
 </body>
