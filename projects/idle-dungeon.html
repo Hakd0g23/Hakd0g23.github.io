@@ -10,8 +10,59 @@
 <nav><a href="../index.html">&larr; All projects</a></nav>
 <main class="project-page">
   <h1>idle-dungeon</h1>
-  <p class="note">Content pending — placeholder scaffold.</p>
+  <span class="tag">Playable · Vanilla JS</span>
+
+  <p>A browser idle/incremental dungeon crawler — no framework, no build
+  step, just HTML, CSS, and JS. Start a run, let it play itself, and come
+  back stronger after every death.</p>
+
+  <h2>Core loop</h2>
+  <ul>
+    <li><strong>Start a run</strong> and the hero descends automatically,
+    one tick every half-second (1x/2x/4x speed, your choice). There's
+    nothing to click mid-run except pause — the game plays itself.</li>
+    <li><strong>Each floor is rolled on the spot</strong>: a normal fight,
+    an elite fight, a treasure room (straight gold), or a shrine (full
+    heal). Combat itself is automatic — hero and enemy trade hits every
+    tick based on ATK/DEF, with a small crit chance from your Fortune
+    stat.</li>
+    <li><strong>XP, levels, and loot happen mid-run</strong> — level-ups
+    heal and buff the hero on the spot, and defeated enemies have a chance
+    to drop temporary weapon/armor/vitality bonuses that only last for the
+    current run.</li>
+    <li><strong>Death ends the run</strong> and converts how deep you got
+    plus your hero level into <strong>essence</strong> — the permanent
+    currency.</li>
+    <li><strong>Essence buys permanent upgrades</strong> (Vitality,
+    Strength, Toughness, Fortune) in the Essence Shop between runs, so
+    every death makes the next run start a little stronger.</li>
+  </ul>
+  <p>That's the whole prestige loop: run, die, cash out, upgrade, go
+  deeper next time. Essence, upgrade levels, and best-floor progress are
+  saved automatically to your browser's local storage; a run in progress
+  is not preserved across a refresh, but everything permanent is.</p>
+
+  <p class="note">As with any client-side browser game, the full JS
+  source is visible to anyone via your browser's view-source or dev
+  tools once the page loads — that's true regardless of whether the
+  project's home repository is public or private, since the code has to
+  ship to your browser to run. Not a bug in this build, just how
+  client-side web games work.</p>
+
+  <h2>Play it</h2>
+  <div id="idle-dungeon-embed" class="embed-wrap">
+    <div class="embed-fallback">
+      <p>The game loads once this area scrolls into view. If it doesn't
+      appear — for example on a narrow/mobile screen, where it's skipped
+      on purpose — you can
+      <a href="../games/idle-dungeon/index.html" target="_blank" rel="noopener">open it in a new tab</a>
+      instead.</p>
+    </div>
+  </div>
 </main>
 <script src="../js/site.js"></script>
+<script>
+  initLazyEmbed('idle-dungeon-embed', '../games/idle-dungeon/index.html');
+</script>
 </body>
 </html>

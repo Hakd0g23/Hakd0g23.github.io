@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Idle Dungeon</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <header class="topbar">
+    <h1>⚔️ Idle Dungeon</h1>
+    <div class="run-controls">
+      <button id="btnStart" class="btn primary">Start Run</button>
+      <div class="speed-group">
+        <button class="btn speed-btn active" data-speed="1">1x</button>
+        <button class="btn speed-btn" data-speed="2">2x</button>
+        <button class="btn speed-btn" data-speed="4">4x</button>
+      </div>
+      <button id="btnPause" class="btn" disabled>Pause</button>
+    </div>
+  </header>
+
+  <main class="layout">
+
+    <section class="panel hero-panel">
+      <h2>Hero</h2>
+      <div class="stat-row">
+        <span>Level</span><span id="heroLevel">1</span>
+      </div>
+      <div class="bar xp-bar"><div id="xpFill" class="fill"></div><span id="xpLabel" class="bar-label">0 / 20 XP</span></div>
+      <div class="bar hp-bar"><div id="hpFill" class="fill"></div><span id="hpLabel" class="bar-label">30 / 30 HP</span></div>
+      <div class="stat-grid">
+        <div class="stat-chip">🗡 ATK <span id="heroAtk">5</span></div>
+        <div class="stat-chip">🛡 DEF <span id="heroDef">2</span></div>
+        <div class="stat-chip">💰 Gold <span id="heroGold">0</span></div>
+        <div class="stat-chip">🏰 Floor <span id="heroFloor">0</span></div>
+      </div>
+    </section>
+
+    <section class="panel dungeon-panel">
+      <h2>Dungeon</h2>
+      <div id="floorBanner" class="floor-banner">Press Start Run to descend.</div>
+      <div id="enemyCard" class="enemy-card hidden">
+        <div class="enemy-name" id="enemyName">???</div>
+        <div class="bar enemy-hp-bar"><div id="enemyHpFill" class="fill"></div><span id="enemyHpLabel" class="bar-label"></span></div>
+        <div class="enemy-stats">
+          <span>🗡 <span id="enemyAtk">0</span></span>
+          <span>🛡 <span id="enemyDef">0</span></span>
+        </div>
+      </div>
+      <div id="log" class="log"></div>
+    </section>
+
+    <section class="panel meta-panel">
+      <h2>Essence Shop <span class="essence-count">✨ <span id="essenceCount">0</span></span></h2>
+      <p class="meta-hint">Permanent upgrades. Survive death, spend essence, come back stronger.</p>
+      <div class="upgrade-list">
+        <div class="upgrade-row">
+          <div class="upgrade-info">
+            <strong>Vitality</strong>
+            <small>+10 Max HP · Lv <span id="lvHp">0</span></small>
+          </div>
+          <button class="btn upg-btn" data-type="hp">Buy (<span id="costHp">10</span>✨)</button>
+        </div>
+        <div class="upgrade-row">
+          <div class="upgrade-info">
+            <strong>Strength</strong>
+            <small>+1.5 ATK · Lv <span id="lvAtk">0</span></small>
+          </div>
+          <button class="btn upg-btn" data-type="atk">Buy (<span id="costAtk">10</span>✨)</button>
+        </div>
+        <div class="upgrade-row">
+          <div class="upgrade-info">
+            <strong>Toughness</strong>
+            <small>+1 DEF · Lv <span id="lvDef">0</span></small>
+          </div>
+          <button class="btn upg-btn" data-type="def">Buy (<span id="costDef">10</span>✨)</button>
+        </div>
+        <div class="upgrade-row">
+          <div class="upgrade-info">
+            <strong>Fortune</strong>
+            <small>+2% Loot &amp; Crit · Lv <span id="lvLuck">0</span></small>
+          </div>
+          <button class="btn upg-btn" data-type="luck">Buy (<span id="costLuck">15</span>✨)</button>
+        </div>
+      </div>
+      <div class="best-run">🏆 Best floor reached: <span id="bestFloor">0</span></div>
+      <button id="btnReset" class="btn danger small">Reset Save</button>
+    </section>
+
+  </main>
+</div>
+<script src="game.js"></script>
+</body>
+</html>
