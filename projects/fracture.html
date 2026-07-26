@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fracture — Hakd0g23</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<nav><a href="../index.html">&larr; All projects</a></nav>
+<main class="project-page">
+  <h1>Fracture <span class="note">(working title)</span></h1>
+  <span class="tag">In development · Web/Capacitor</span>
+
+  <p>A Block Blast-style block-placement puzzle with one twist: clearing a
+  line generates "shard" debris that scatters back onto the board instead of
+  just disappearing. It turns the genre's usual externally-imposed bad luck
+  (a piece drought you can't do anything about) into a visible, self-caused
+  consequence you can actually see coming and plan around.</p>
+
+  <h2>The core idea</h2>
+  <ul>
+    <li><strong>Clear a line, generate shards</strong> — 1&ndash;2 cell
+    fragments, capped small on purpose, colored after the piece that made
+    them.</li>
+    <li><strong>Shards queue up, they don't ambush you</strong> — they drain
+    into future piece trays rather than dropping in instantly, so the cost
+    is telegraphed, not a surprise.</li>
+    <li><strong>Can't be a cheap kill</strong> — a shard is only ever
+    generated if it's guaranteed placeable somewhere, so the mechanic adds
+    tension without being able to end your run on its own.</li>
+  </ul>
+
+  <h2>Where it stands</h2>
+  <p>The shard mechanic has been validated with roughly 4,200 simulated
+  games across five different bot strategies before any art or polish went
+  in: zero of 590 recorded game-overs were caused by an unplaceable shard,
+  confirming it reads as tension rather than punishment. A first art pass
+  (movement, palette, board/tray look) has since been applied on top of that
+  validated core, and the project has an Android build running on an
+  emulator; real iOS/Android hardware verification is still an open step
+  before this is ready to share as a build.</p>
+
+  <p class="note">Still pre-release and iterating — no public build or
+  repository link yet. This page will get a demo link once there's a build
+  worth putting in front of people.</p>
+</main>
+<script src="../js/site.js"></script>
+</body>
+</html>

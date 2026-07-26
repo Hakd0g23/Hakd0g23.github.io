@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LuckyLanes — Hakd0g23</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<nav><a href="../index.html">&larr; All projects</a></nav>
+<main class="project-page">
+  <h1>LuckyLanes</h1>
+  <span class="tag">Live · Next.js + NestJS/Socket.IO</span>
+
+  <p>A real-time multiplayer lobby game: players create or join a room, chat
+  while everyone gets ready, then watch a live countdown resolve into a
+  winner reveal. Frontend is Next.js on Netlify; backend is a NestJS +
+  Socket.IO service on Render, backed by Postgres.</p>
+
+  <p class="cta">
+    <a class="btn" href="https://luckylanes-gg.netlify.app" target="_blank" rel="noopener">Play LuckyLanes &rarr;</a>
+  </p>
+
+  <h2>What it does</h2>
+  <ul>
+    <li><strong>Create or join a room</strong> — a shareable lobby code, no
+    account required.</li>
+    <li><strong>Live lobby chat and ready-up</strong> — everyone in the room
+    sees the same state update in real time over a Socket.IO connection.</li>
+    <li><strong>Countdown &rarr; winner reveal</strong> — once the room is
+    ready, a synced countdown resolves into a single winner shown to every
+    connected player at once.</li>
+  </ul>
+
+  <h2>Under the hood</h2>
+  <p>The full flow — create, join, chat, ready-up, countdown, winner reveal —
+  runs against the live Render/Postgres backend, not a mock. Because the
+  game state is shared over a live socket connection, it's meant to be tried
+  with a second tab or a friend's device open to the same room code.</p>
+
+  <p class="note">This is a real multiplayer service with a live database —
+  be considerate with room creation, and expect it to behave like the shared
+  production environment it is.</p>
+</main>
+<script src="../js/site.js"></script>
+</body>
+</html>
