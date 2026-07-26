@@ -13,10 +13,16 @@ nav a{text-decoration:none;color:var(--text);font-weight:600}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;padding:1.5rem;max-width:72rem;margin:0 auto}
 .card{background:var(--panel);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
 .card img{width:100%;aspect-ratio:16/9;object-fit:cover;background:#000}
-.card .body{padding:1rem}
+.card .placeholder{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#20242e,#171a21);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+.card .body{padding:1rem;flex:1;display:flex;flex-direction:column}
 .card h2{margin:0 0 .4rem;font-size:1.15rem}
 .card p{color:var(--muted);margin:0 0 .75rem;font-size:.95rem}
-.tag{display:inline-block;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);border:1px solid var(--border);border-radius:999px;padding:.15rem .55rem;margin-bottom:.5rem}
+.card .btn{margin-top:auto}
+.tag{display:inline-block;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;border:1px solid var(--border);border-radius:999px;padding:.15rem .55rem;margin-bottom:.5rem}
+.tag{color:var(--muted)}
+.tag.tag-live{color:#7ce0a8;border-color:#2f4a3a}
+.tag.tag-dev{color:#e0b567;border-color:#4a3f2a}
+.tag.tag-writeup{color:var(--muted);border-style:dashed}
 .embed-wrap{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:8px;overflow:hidden}
 .embed-wrap iframe{width:100%;height:100%;border:0;display:block}
 .embed-fallback{display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);text-align:center;padding:1rem}
@@ -26,10 +32,13 @@ footer{text-align:center;color:var(--muted);padding:2rem;font-size:.85rem}
 .btn{display:inline-block;background:var(--accent);color:#0f1115;padding:.6rem 1.1rem;border-radius:8px;font-weight:700;text-decoration:none}
 .note{background:#20242e;border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;font-size:.9rem;color:var(--muted)}
 .project-page figure{margin:1.5rem auto;text-align:center}
-.project-page .screenshot{max-width:280px;width:100%;display:block;margin:0 auto;border:1px solid var(--border);border-radius:14px}
+.project-page .screenshot{max-width:32rem;width:100%;display:block;margin:0 auto;border:1px solid var(--border);border-radius:14px}
 .project-page figcaption{color:var(--muted);font-size:.85rem;margin-top:.6rem}
 .cta{margin:1.25rem 0}
 @media (max-width:700px){
   .embed-wrap{aspect-ratio:auto;height:auto;padding:2rem 1rem;text-align:center}
   .embed-wrap iframe{display:none}
+}
+@media (max-width:480px){
+  header p{max-width:20rem}
 }
